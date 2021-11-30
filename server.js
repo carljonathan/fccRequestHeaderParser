@@ -25,10 +25,15 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+// api to get user request header information
 app.get("/api/whoami", (req, res) => {
+  // get user ip
   const ip = req.ip
+  // get user operating and browser system information
   const agent = req.headers["user-agent"]
+  // get user language settings
   const language = req.headers["accept-language"]
+  // respond api with above collected information
   res.json({
     'ipaddress': ip,
     'language': language,
